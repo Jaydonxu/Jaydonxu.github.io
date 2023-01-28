@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
+import { useStore } from './pinia/user'
+
+const counter = useStore()
+
+function addCount() {
+  console.log('xxx')
+  counter.count++
+  // 带有自动补全 ✨
+  // counter.$patch({ count: counter.count + 1 })
+  // 或者使用 action 代替
+  // counter.increment()
+}
 </script>
 
 <template>
@@ -10,6 +22,8 @@ import HelloWorld from './components/HelloWorld.vue'
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
+    <button @click="addCount">确定</button>
+    <div>{{ counter.count }}</div>
   </div>
   <HelloWorld msg="Vite + Vue" />
 </template>
